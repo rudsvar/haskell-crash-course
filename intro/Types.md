@@ -59,3 +59,5 @@ Everything before `=>` is called a class constraint. A type can have many class 
 Even though GHC is extremely good at doing type inference (finding the types of your functions), try to always be explicit about your types. This is both helpful for you as a programmer and for the compiler to report type errors at the right place.
 
 And when looking at names and error messages and such, **always** know whether you are in the type world or expression world.
+
+For more details, read the [Types and Typeclasses](http://learnyouahaskell.com/types-and-typeclasses) section of the Learn You A Haskell book.
