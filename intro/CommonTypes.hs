@@ -92,11 +92,3 @@ abListOfChar = ['a', 'b']
 
 helloWorld :: String
 helloWorld = "Hello " ++ "world!"
-
-stringToUpper :: String -> String
-stringToUpper []        = []
-stringToUpper (c : str) = toUpper c : stringToUpper str
-
-reverseString :: String -> String
-reverseString []       = []
-reverseString (x : xs) = xs ++ [x]
