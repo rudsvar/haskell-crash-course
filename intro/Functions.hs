@@ -30,11 +30,12 @@ mul (x,y) = x * y
 -- Haskell is purely functional, i.e. in general, everything evaluates to a value.
 -- All values are immutable, meaning we cannot change existing values.
 -- Thus, Haskell does not allow traditional for or while loops,
--- since we cannot update loop variables.
+-- since we cannot update the loop variables.
 -- Instead of using loops, we can use recursion.
 
-
-
+stringToUpper :: String -> String
+stringToUpper []        = []
+stringToUpper (c : str) = toUpper c : stringToUpper str
 
 reverseString :: String -> String
 reverseString []       = []
@@ -42,11 +43,7 @@ reverseString (x : xs) = reverseString xs ++ [x]
 
 -- This function checks whether a given string is a palindrome.
 isPalindrome :: String -> Bool
-isPalindrome s = s == reverseString s
-
-stringToUpper :: String -> String
-stringToUpper []        = []
-stringToUpper (c : str) = toUpper c : stringToUpper str
+isPalindrome s = (s == reverseString s)
 
 -- We can also pass functions as arguments!
 filterBy :: (Int -> Bool) -> [Int] -> [Int]
@@ -54,3 +51,16 @@ filterBy _ [] = []
 filterBy pred (x:xs)
   = if pred x then x : filterBy pred xs
               else filterBy pred xs
+
+-- Let bindings can be used to introduce variables and functions in a local scope.
+multiplyByTwo :: Int -> Int
+multiplyByTwo x =
+    let two = 2
+     in x * two
+
+helloWorld :: String
+helloWorld =
+    let
+        hello = "Hello"
+        world = "world!"
+     in hello ++ " " ++ world
