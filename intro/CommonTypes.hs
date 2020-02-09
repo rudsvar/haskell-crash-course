@@ -10,6 +10,15 @@ one = 1
 three :: Int
 three = one + 2
 
+successor :: Int -> Int
+successor x = x + 1
+
+predecessor :: Int -> Int
+predecessor x = x - 1
+
+one' :: Int
+one' = div 3 2
+
 -- Float
 
 twoPointThree :: Float
@@ -44,24 +53,24 @@ second (_, b) = b
 
 -- List
 
+-- data [a] = [] | a : [a]
 data MyList = Empty | Prepend Int MyList
 
 myList1 :: MyList
 myList1 = Prepend 1 (Prepend 2 Empty)
 
--- data [a] = [] | a : [a]
 list1 :: [Int]
 list1 = [1, 2, 3]
 -- list1 = 1 : (2 : (3 : []))
 -- list1 = 1 : 2 : 3 : []
 
-head :: [Int] -> Int
-head (x : _) = x
-head []      = error "head of empty list"
+myHead :: [Int] -> Int
+myHead (x : _) = x
+myHead []      = error "head of empty list"
 
-tail :: [Int] -> [Int]
-tail (_ : xs) = xs
-tail []       = error "tail of empty list"
+myTail :: [Int] -> [Int]
+myTail (_ : xs) = xs
+myTail []       = error "tail of empty list"
 
 -- Char
 charA :: Char
@@ -70,25 +79,23 @@ charA = 'a'
 charB :: Char
 charB = 'b'
 
--- ab == ab2
-
 upperB :: Char
 upperB = toUpper charB
 
--- String
+-- String ([Char])
 
 abString :: String
 abString = "ab"
 
 abListOfChar :: [Char]
-abListOfChar = [charA, charB]
+abListOfChar = ['a', 'b']
+
+helloWorld :: String
+helloWorld = "Hello " ++ "world!"
 
 stringToUpper :: String -> String
 stringToUpper []        = []
 stringToUpper (c : str) = toUpper c : stringToUpper str
-
-helloWorld :: String
-helloWorld = "Hello " ++ "world!"
 
 reverseString :: String -> String
 reverseString []       = []
