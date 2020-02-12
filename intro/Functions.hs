@@ -34,11 +34,11 @@ mul (x,y) = x * y
 -- Instead of using loops, we can use recursion.
 
 stringToUpper :: String -> String
-stringToUpper []        = []
+stringToUpper ""        = ""
 stringToUpper (c : str) = toUpper c : stringToUpper str
 
 reverseString :: String -> String
-reverseString []       = []
+reverseString ""       = ""
 reverseString (x : xs) = reverseString xs ++ [x]
 
 -- This function checks whether a given string is a palindrome.
