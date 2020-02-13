@@ -9,7 +9,7 @@ add x y = x + y
 -- However, this is not entirely accurate. Every Haskell function takes one parameter only.
 -- So how does that work?
 -- All functions which have seemingly accepted multiple parameters have been "curried functions".
--- Probably easier to understand by showing an example.
+-- Probably easier to understand by looking at a few examples.
 
 -- add 2 3 looks like it takes two integers as input and returns their sum, 5.
 -- However, what actually happens is that add takes one integer 2,
@@ -20,7 +20,6 @@ add x y = x + y
 
 -- Thus, add :: Int -> Int -> Int is equal to
 --       add :: Int -> (Int -> Int)
---              2       add 2 x
 
 -- i.e. add takes an integer and returns a function which takes an integer and returns an integer.
 
@@ -88,9 +87,8 @@ lessThanThree x = x < 3
 -- lessThanThree, \x -> x < 3 and (< 3) all take one numerical argument and return a bool.
 
 -- Let's try a slightly more complicated lambda.
-
-
-
+keepEquals :: [(Int, Int)] -> [(Int, Int)]
+keepEquals xs = filter (\(x,y) -> x == y) xs
 
 -- filter is a higher-order function, which is a function that either takes a function as an argument, returns a function, or both.
 -- We will talk more about higher-order functions later.
