@@ -43,23 +43,23 @@ instance Addable List where
 -- Commonly, Haskell does not use the -able ending
 -- If we want a more complicated typeclass:
 
-data Pos = Pos Int Int
+-- data Pos = Pos Int Int
 
-instance Num Pos where
-  Pos x1 y1 + Pos x2 y2 = Pos (x1 + x2) (y1 + y2)
-  signum (Pos x y) = Pos (signum x) (signum y)
-  abs (Pos x y) = Pos (abs x) (abs y)
-  negate (Pos x y) = Pos (negate x) (negate y)
-  fromInteger i = Pos (fromInteger i) (fromInteger i)
-  Pos x1 y1 * Pos x2 y2 = Pos (x1 * x2) (y1 * y2)
+-- instance Num Pos where
+--   Pos x1 y1 + Pos x2 y2 = Pos (x1 + x2) (y1 + y2)
+--   signum (Pos x y) = Pos (signum x) (signum y)
+--   abs (Pos x y) = Pos (abs x) (abs y)
+--   negate (Pos x y) = Pos (negate x) (negate y)
+--   fromInteger i = Pos (fromInteger i) (fromInteger i)
+--   Pos x1 y1 * Pos x2 y2 = Pos (x1 * x2) (y1 * y2)
 
-instance Num Bool where
-  b1 + b2 = b1 || b2
-  b1 * b2 = b1 && b2
-  abs    = id
-  negate = not
-  signum = id
-  fromInteger i = i > 0
+-- instance Num Bool where
+--   b1 + b2 = b1 || b2
+--   b1 * b2 = b1 && b2
+--   abs    = id
+--   negate = not
+--   signum = id
+--   fromInteger i = i > 0
 
 class Creature a where
   getName :: a -> String
