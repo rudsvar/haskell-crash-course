@@ -1,10 +1,21 @@
 {- Higher order functions -}
 
+import Prelude hiding (map, any, all)
+
+-- We have already looked at filter, which is a higher-order function.
 -- Higher order functions are functions which either take functions as parameters, return functions as values, or both.
 -- Examples: map, filter, any, all
 -- We implemented a non-polymorphic version of filter on Monday ("filterBy").
 
-import Prelude hiding (map, any, all)
+
+-- As we mentioned on Monday, recursion can achieve the things one might otherwise do using a loop in an imperative language.
+-- Let's write a simple recursive function
+
+doubleAll :: [Int] -> [Int]
+-- doubleAll [] = []
+-- doubleAll (x:xs) = x * 2 : doubleAll xs
+doubleAll xs = map (*2) xs
+
 
 -- This is not necessary how map is actually implemented,
 -- but it does the exact same as the Prelude version.
@@ -39,4 +50,6 @@ all p (x:xs) =
     case p x of
       True -> all p xs
       False -> False
+
+-- takeWhile, dropWhile
 
