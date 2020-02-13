@@ -14,6 +14,8 @@ main = do
   readFileExample
   writeFileExample
 
+  print (Mul (Add (Var "a") (Var "b")) (Var "c"))
+
 -- What are the types of these things?
 -- putStrLn :: String -> IO ()
 -- getLine :: IO String
