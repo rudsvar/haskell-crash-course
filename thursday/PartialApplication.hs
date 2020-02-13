@@ -9,6 +9,7 @@ add x y = x + y
 -- However, this is not entirely accurate. Every Haskell function takes one parameter only.
 -- So how does that work?
 -- All functions which have seemingly accepted multiple parameters have been "curried functions".
+-- Curried functions are functions which take multiple parameter one by one.
 -- Probably easier to understand by looking at a few examples.
 
 -- add 2 3 looks like it takes two integers as input and returns their sum, 5.
