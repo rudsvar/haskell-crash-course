@@ -8,6 +8,7 @@ A repository for resources used in the Haskell crash course.
  - Coding environment: GHC, GHCi, VSCode
  - Commond Types: `Int`, `Float`, `Bool`, `List`, `Char`, `String`, `Tuple`
  - Functions
+ - Type notation
  - Prelude and the standard library
  - Documentation
 
