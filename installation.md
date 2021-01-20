@@ -81,7 +81,7 @@ We recommend VS Code with the Haskell plugin,
 as it provides the most IDE-features,
 but will list a few alternatives.
 
-## Visual Studio Code
+### Visual Studio Code
 
 Vistual Studio Code is a text editor that implements the language client protocol.
 You can download it [here](https://code.visualstudio.com/).
@@ -93,7 +93,7 @@ which uses the Haskell Language Server to provide IDE-features.
 You can either use the extensions-menu in the VSCode,
 or go to [this link](https://marketplace.visualstudio.com/items?itemName=haskell.haskell)
 
-## Extra: Improving the Feedback Loop
+### Extra: Improving the Feedback Loop
 
 If your VSCode Haskell extension works,
 then you're all set to start programming.
