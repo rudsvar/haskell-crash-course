@@ -1,6 +1,8 @@
-# Haskell Crash Course
+# INF222 Haskell Crash Course
 
-A repository for resources used in the Haskell crash course.
+## Installation
+
+For Haskell installation instructions, click [here](installation.md) (takes 20-30 min).
 
 ## Program
 
@@ -35,3 +37,10 @@ A repository for resources used in the Haskell crash course.
     - `writeFile`
   - IO and `read`: Preventing ambigous types
   - The basics of the Stack package manager: Adding `random` as a dependency in your Haskell project.
+
+## Recommended online resources
+  - Searching for documentation: [Hoogle](https://hoogle.haskell.org/)
+  - Prelude documentation: [Prelude](https://hackage.haskell.org/package/base-4.14.0.0/docs/Prelude.html)
+  - Book for beginners: [Learn You a Haskell for Great Good](http://learnyouahaskell.com/chapters)
+  - A more advanced book: [Real World Haskell](http://book.realworldhaskell.org/)
+  - Useful tips: [What I Wish I Knew When Learning Haskell](http://dev.stephendiehl.com/hask/)
