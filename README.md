@@ -6,22 +6,25 @@ A repository for resources used in the Haskell crash course.
 
 ### Day 1
  - Coding environment: GHC, GHCi, VSCode
- - Commond Types: `Int`, `Float`, `Bool`, `List`, `Char`, `String`, `Tuple`
+ - Common Types: `Int`, `Float`, `Bool`, `List`, `Char`, `String`, `Tuple`
  - Functions
  - Type notation
  - Prelude and the standard library
  - Documentation
 
 ### Day 2
+ - Pattern matching in functions?
+ - Mathematical operators (incl. `Int` vs `Float`, `Infix` vs `Prefix`)
+ - Partial application (currying) and lambda functions
+    - Show examples of partial application with mathematical operators
+ - Control Structures
+    - `if` (important: if-else as an expression)
+    - `let`
+    - `where`
+    - `case`
+    - guards
  - Type aliasing: `type`
  - Custom types: `data` (Sum types, `Maybe`, `Either`, BTL)
- - Partial application (currying) and lambda functions
- - Mathematical operators (incl. `Int` vs `Float`, `Infix` vs `Prefix`)
- - Control Structures
-    - `case`
-    - `where`
-    - guards
-    - pattern matching
 
 ### Day 3
   - Higher order functions (`map`, `filter`, `any`, `all`) instead recursion
