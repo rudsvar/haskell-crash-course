@@ -10,14 +10,14 @@ type PhoneNumber = String
 
 -- Wrap another type (usually `newtype` is used here, but that is not important).
 -- If there is only one constructor, its name is often the same as the type (IntWrapper).
-data IntWrapper = WrapInt Int
+data IntWrapper = WrapInt Int deriving (Show)
 
 -- Unwrap the value, perform an operation on it, then re-wrap it.
 inc :: IntWrapper -> IntWrapper
 inc (WrapInt i) = WrapInt (i + 1)
 
 -- Store more data in a single type
-data Tuple = MkTuple Int Int
+data Tuple = MkTuple Int Int deriving (Show)
 
 -- Task 1: Swap the two fields in the tuple
 swap :: Tuple -> Tuple
@@ -33,7 +33,7 @@ type Width = Float
 -- We can have multiple constructors, each with different fields.
 -- Note that these fields are not named, so we can only access values with
 -- pattern matching. Will come back to how we can name them later.
-data Shape = Circle Radius | Rectangle Height Width
+data Shape = Circle Radius | Rectangle Height Width deriving (Show)
 
 -- Create a string that describes the shape.
 area :: Shape -> Float
@@ -43,7 +43,7 @@ area (Rectangle height width) = height * width
 -- # Types from Prelude and polymorphism (10 min)
 
 -- Defining our own `Bool`.
-data MyBool = MyFalse | MyTrue
+data MyBool = MyFalse | MyTrue deriving (Show)
 
 -- Represent missing result.
 -- Avoid things like `NullPointerException` by forcing the programmer to handle it.
@@ -66,7 +66,7 @@ maybeSquareRoot' x
 
 -- What if we want to include more information?
 -- data Either a b = Left a | Right b in Prelude.
-data Result a b = Err a | Ok b
+data Result a b = Err a | Ok b deriving (Show)
 
 -- Task 2: squareRoot with a more detailed error message.
 resultSquareRoot :: Float -> Result String Float
@@ -82,6 +82,7 @@ data IntExpr
   | Add IntExpr IntExpr
   | Mul IntExpr IntExpr
   | Negate IntExpr
+  deriving (Show)
 
 -- Task 3 (partially): Evaluate the arithmetic expression
 evalIntExpr :: IntExpr -> Int
@@ -143,6 +144,7 @@ data Person = MkPerson
   { name :: String, -- name :: Person -> String
     age :: Int -- age :: Person -> Int
   }
+  deriving (Show)
 
 -- Use the generated functions to access fields
 printPerson :: Person -> String
