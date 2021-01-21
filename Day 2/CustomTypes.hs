@@ -40,7 +40,7 @@ area :: Shape -> Float
 area (Circle radius) = pi * radius ^ 2
 area (Rectangle height width) = height * width
 
--- Types from Prelude and polymorphism (10 min)
+-- # Types from Prelude and polymorphism (10 min)
 
 -- Defining our own `Bool`.
 data MyBool = MyFalse | MyTrue
@@ -74,7 +74,7 @@ resultSquareRoot x
   | x < 0 = Err "Number must be non-negative!"
   | otherwise = Ok (sqrt x)
 
--- Representing arithmetic expressions and evaluating them (10 min)
+-- # Representing arithmetic expressions and evaluating them (10 min)
 
 -- A more complex type representing an expression
 data IntExpr
@@ -90,7 +90,7 @@ evalIntExpr (Add e1 e2) = evalIntExpr e1 + evalIntExpr e2
 evalIntExpr (Mul e1 e2) = evalIntExpr e1 * evalIntExpr e2
 evalIntExpr (Negate e) = - evalIntExpr e -- could use `negate`
 
--- BTL (Basic Types and Programming Languages Language)
+-- # BTL (Basic Types and Programming Languages Language)
 -- You will come across this language later in the course.
 -- This is a short introduction to it (3 min), and how one can be evaluated (12 min).
 
@@ -135,7 +135,7 @@ eval (If predicate branch1 branch2) = case eval predicate of
   VBool False -> eval branch2
   _ -> VError "Predicate must be Bool"
 
--- Bonus: Record type (5 min)
+-- # Bonus: Record type (5 min)
 
 -- Single constructor, multiple named fields.
 -- Functions for extracting fields are automatically generated.
