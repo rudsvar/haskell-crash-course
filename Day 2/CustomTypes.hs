@@ -6,7 +6,7 @@ type MyString = [Char]
 
 type PhoneNumber = String
 
--- # Defining new data types ()
+-- # Defining new data types (10 min)
 
 -- Wrap another type (usually `newtype` is used here, but that is not important).
 -- If there is only one constructor, its name is often the same as the type (IntWrapper).
@@ -40,7 +40,7 @@ area :: Shape -> Float
 area (Circle radius) = pi * radius ^ 2
 area (Rectangle height width) = height * width
 
--- Types from Prelude and polymorphism
+-- Types from Prelude and polymorphism (10 min)
 
 -- Defining our own `Bool`.
 data MyBool = MyFalse | MyTrue
@@ -56,7 +56,11 @@ data MyMaybe a -- type parameter
 -- How do we signal an error?
 maybeSquareRoot :: Float -> MyMaybe Float
 maybeSquareRoot x = if x < 0 then MyNothing else MyJust (sqrt x)
-maybeSquareRoot x
+
+-- Alternative implementation with guards.
+-- Guards can be much better with many branches.
+maybeSquareRoot' :: Float -> MyMaybe Float
+maybeSquareRoot' x
   | x < 0 = MyNothing
   | otherwise = MyJust (sqrt x)
 
@@ -70,7 +74,7 @@ resultSquareRoot x
   | x < 0 = Err "Number must be non-negative!"
   | otherwise = Ok (sqrt x)
 
--- Representing expressions and evaluating them
+-- Representing arithmetic expressions and evaluating them (10 min)
 
 -- A more complex type representing an expression
 data IntExpr
@@ -79,7 +83,7 @@ data IntExpr
   | Mul IntExpr IntExpr
   | Negate IntExpr
 
--- Task 3 (partially): Turn an arithmetic expression
+-- Task 3 (partially): Evaluate the arithmetic expression
 evalIntExpr :: IntExpr -> Int
 evalIntExpr (Value i) = i
 evalIntExpr (Add e1 e2) = evalIntExpr e1 + evalIntExpr e2
@@ -88,7 +92,7 @@ evalIntExpr (Negate e) = - evalIntExpr e -- could use `negate`
 
 -- BTL (Basic Types and Programming Languages Language)
 -- You will come across this language later in the course.
--- This is a short introduction to it, and how one can be evaluated.
+-- This is a short introduction to it (3 min), and how one can be evaluated (12 min).
 
 -- Expression
 data BTLExpr
@@ -131,7 +135,7 @@ eval (If predicate branch1 branch2) = case eval predicate of
   VBool False -> eval branch2
   _ -> VError "Predicate must be Bool"
 
--- Bonus: Record type
+-- Bonus: Record type (5 min)
 
 -- Single constructor, multiple named fields.
 -- Functions for extracting fields are automatically generated.
