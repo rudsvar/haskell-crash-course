@@ -15,7 +15,6 @@ For Haskell installation instructions, click [here](installation.md) (takes 20-3
  - Documentation
 
 ### Day 2
- - Pattern matching in functions?
  - Mathematical operators (incl. `Int` vs `Float`, `Infix` vs `Prefix`)
  - Partial application (currying) and lambda functions
     - Show examples of partial application with mathematical operators
