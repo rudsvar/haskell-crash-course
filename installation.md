@@ -110,9 +110,9 @@ It is a wrapper around GHCi,
 and it reloads GHCi automatically on file save,
 saving you a few seconds each time.
 
-#### Compiler etting to help finding errors
+#### Compiler setting to help finding errors
 
-To improve the feedback from GHC in GHCI, 
+To improve the feedback from GHC in GHCI,
 you can add the following setting to help you find incomplete patterns in your functions.
 
 ```sh
@@ -132,7 +132,7 @@ other dynamic, non-language, flag settings:
   -fimplicit-import-qualified
 warning settings:
   -Wincomplete-patterns <-- has been added
-ghci > 
+ghci >
 ```
 
 ##### Example
