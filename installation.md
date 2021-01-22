@@ -109,3 +109,54 @@ you should check out [GHCid](https://github.com/ndmitchell/ghcid).
 It is a wrapper around GHCi,
 and it reloads GHCi automatically on file save,
 saving you a few seconds each time.
+
+#### Compiler etting to help finding errors
+
+To improve the feedback from GHC in GHCI, 
+you can add the following setting to help you find incomplete patterns in your functions.
+
+```sh
+> ghci
+ghci > :set -Wincomplete-patterns
+ghci > :show
+options currently set: none.
+base language is: Haskell2010
+with the following modifiers:
+  -XNoDatatypeContexts
+  -XNondecreasingIndentation
+GHCi-specific dynamic flag settings:
+other dynamic, non-language, flag settings:
+  -fexternal-dynamic-refs
+  -fignore-optim-changes
+  -fignore-hpc-changes
+  -fimplicit-import-qualified
+warning settings:
+  -Wincomplete-patterns <-- has been added
+ghci > 
+```
+
+##### Example
+
+```haskell
+test :: [a] -> [a]
+test (x:xs) = xs
+```
+
+This will give you the warning message:
+
+```sh
+test.hs:2:1: warning: [-Wincomplete-patterns]
+    Pattern match(es) are non-exhaustive
+    In an equation for ‘test’: Patterns not matched: []
+  |
+2 | test (x:xs) = xs
+```
+
+To resolve this do add the missing pattern or ignore it.
+e.g. this will remove the warning.
+
+```haskell
+test :: [a] -> [a]
+test [] = []
+test (x:xs) = xs
+```
