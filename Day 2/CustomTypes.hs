@@ -2,6 +2,10 @@ module CustomTypes where
 
 -- # Type aliases (1 min)
 
+-- Lets you define an alternative name for a type.
+-- Useful for making typing complex types easier (e.g. [([Foo], [Bar])]),
+-- as well as giving a hint to what it is used for (e.g. PhoneNumber).
+
 type MyString = [Char]
 
 type PhoneNumber = String
@@ -10,40 +14,50 @@ type PhoneNumber = String
 
 -- Wrap another type (usually `newtype` is used here, but that is not important).
 -- If there is only one constructor, its name is often the same as the type (IntWrapper).
+-- See type of `WrapInt`.
 data IntWrapper = WrapInt Int deriving (Show)
 
--- Unwrap the value, perform an operation on it, then re-wrap it.
+-- Unwrap the value by pattern matching on it, perform an operation on it, then re-wrap it.
 inc :: IntWrapper -> IntWrapper
 inc (WrapInt i) = WrapInt (i + 1)
 
--- Store more data in a single type
+-- Store more data in a single type.
+-- The two `Int`s are like fields (but are not named).
+-- This means that we can only extract them with pattern matching.
+-- See type of `MkTuple`.
 data Tuple = MkTuple Int Int deriving (Show)
 
--- Task 1: Swap the two fields in the tuple
+-- Task 1: Swap the two fields in the tuple.
 swap :: Tuple -> Tuple
 swap (MkTuple x y) = MkTuple y x
 
--- Type aliases to make fields more obvious
+-- Type aliases to make field meaning more obvious.
+-- Without it, we would just have a `Float`.
 type Radius = Float
 
-type Height = Float
+-- Wrapper types to get compile time errors if we get the order wrong.
+-- Drawback: More unwrapping whenever we want to use it.
+data Height = Height Float deriving (Show)
 
-type Width = Float
+data Width = Width Float deriving (Show)
 
 -- We can have multiple constructors, each with different fields.
 -- Note that these fields are not named, so we can only access values with
 -- pattern matching. Will come back to how we can name them later.
+-- See type of `Circle` and `Rectangle`.
 data Shape = Circle Radius | Rectangle Height Width deriving (Show)
 
 -- Create a string that describes the shape.
+-- We must now match on `Height` and `Width` too.
 area :: Shape -> Float
 area (Circle radius) = pi * radius ^ 2
-area (Rectangle height width) = height * width
+area (Rectangle (Height height) (Width width)) = height * width
 
 -- # Types from Prelude and polymorphism (10 min)
 
 -- Defining our own `Bool`.
-data MyBool = MyFalse | MyTrue deriving (Show)
+data MyBool = MyFalse | MyTrue
+  deriving (Show)
 
 -- Represent missing result.
 -- Avoid things like `NullPointerException` by forcing the programmer to handle it.
@@ -51,6 +65,7 @@ data MyBool = MyFalse | MyTrue deriving (Show)
 data MyMaybe a -- type parameter
   = MyNothing
   | MyJust a
+  deriving (Show)
 
 -- Square root only works for non-negative numbers.
 -- How do we signal an error?
@@ -64,7 +79,7 @@ maybeSquareRoot' x
   | x < 0 = MyNothing
   | otherwise = MyJust (sqrt x)
 
--- What if we want to include more information?
+-- What if we want to include more information about what went wrong?
 -- data Either a b = Left a | Right b in Prelude.
 data Result a b = Err a | Ok b deriving (Show)
 
@@ -76,9 +91,11 @@ resultSquareRoot x
 
 -- # Representing arithmetic expressions and evaluating them (10 min)
 
--- A more complex type representing an expression
+-- Let's try to represent a simple language with a new type.
+-- We want to be able to add, multiply and negate numbers,
+-- so let's make cases for each of those.
 data IntExpr
-  = Value Int
+  = Number Int
   | Add IntExpr IntExpr
   | Mul IntExpr IntExpr
   | Negate IntExpr
@@ -86,14 +103,25 @@ data IntExpr
 
 -- Task 3 (partially): Evaluate the arithmetic expression
 evalIntExpr :: IntExpr -> Int
-evalIntExpr (Value i) = i
+evalIntExpr (Number i) = i
 evalIntExpr (Add e1 e2) = evalIntExpr e1 + evalIntExpr e2
 evalIntExpr (Mul e1 e2) = evalIntExpr e1 * evalIntExpr e2
 evalIntExpr (Negate e) = - evalIntExpr e -- could use `negate`
 
 -- # BTL (Basic Types and Programming Languages Language)
+
 -- You will come across this language later in the course.
 -- This is a short introduction to it (3 min), and how one can be evaluated (12 min).
+
+-- We have a strange representation of numbers, where we have a constant (0), and
+-- bigger numbers are built up as expressions using `Succ` and `Pred`.
+-- So Zero = 0, Succ Zero = 1, Succ (Succ Zero) = 2, and so on.
+
+-- We also want to be able to check if a number is zero, so we add a constructor `IsZero`.
+
+-- Evaluating `IsZero` of some expression should give us a boolean, so we need `ETrue` and `EFalse`.
+-- This result can then be used as a predicate for the `If` case, which gives us a new expression depending
+-- on the value of the predicate.
 
 -- Expression
 data BTLExpr
