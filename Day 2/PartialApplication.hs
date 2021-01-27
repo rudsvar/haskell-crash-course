@@ -102,20 +102,49 @@ keepEquals xs = filter (\(x,y) -> x == y) xs
 ----------------------------
 -- EXERCISES --
 
--- Write a function keepNonZero that using
+-- Write a function keepNonZero using
 --  a) the where keyword and a named function
 --  b) a lambda function
 --  c) partial application.
 -- The function takes a list of integers and removes all occurrences of 0.
--- Hint: Use the operator /= to check for inequality.
+-- Hint: Use the operator /= to check for inequality, and the filter function.
 
--- keepNonZero :: [Int] -> [Int]
--- keepNonZero xs = filter nonZero xs
---   where
---     nonZero x = x /= 0
+keepNonZero :: [Int] -> [Int]
+keepNonZero xs = filter nonZero xs
+  where
+    nonZero x = x /= 0
 
 -- keepNonZero :: [Int] -> [Int]
 -- keepNonZero xs = filter (\x -> x /= 0) xs
 
 -- keepNonZero :: [Int] -> [Int]
 -- keepNonZero xs = filter (/= 0) xs
+
+--------
+-- LET--
+--------
+
+-- Instead of using the where keyword, we could also have used another control structure:
+-- Let ... in ... .
+
+-- keepNonZero :: [Int] -> [Int]
+-- keepNonZero xs =
+    --  let nonZero x = x /= 0
+    --  in filter nonZero xs
+
+-- Another example:
+
+helloWorld :: String
+helloWorld =
+  let hello = "Hello"
+      world = " world!"
+  in hello ++ world
+
+-- Works similar to using where, but the order is different
+-- - the local variables/functions are introduced before they are used.
+-- Using the let keyword may yield better readibility than the where keyword,
+-- but this is usually a matter of preference.
+
+-- Suggestion: let is useful if you want your code to look imperative/sequential,
+-- i.e. you want to define multiple local values before using them,
+-- while where is useful for defining locally scoped functions.
