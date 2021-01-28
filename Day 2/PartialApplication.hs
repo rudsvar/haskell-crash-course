@@ -69,7 +69,7 @@ first = \(x,_) -> x
 
 -- Let's create a function that takes a list of integers
 -- and filters out all integer smaller than 3.
--- i.e. dropSmallerThanThree [1,2,3,4,5] yields [1,2]
+-- i.e. keepSmallerThanThree [1,2,3,4,5] yields [1,2]
 
 -- We use a function filter :: (a -> Bool) -> [a] -> [a]
 
@@ -78,8 +78,8 @@ first = \(x,_) -> x
 -- and instead use a simple partially applied function (< 3).
 
 -- Version 1:
-dropSmallerThanThree :: [Int] -> [Int]
-dropSmallerThanThree xs = filter lessThanThree xs
+keepSmallerThanThree :: [Int] -> [Int]
+keepSmallerThanThree xs = filter lessThanThree xs
   where
       lessThanThree :: Int -> Bool
       lessThanThree x = x < 3
