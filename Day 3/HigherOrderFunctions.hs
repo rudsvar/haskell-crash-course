@@ -17,6 +17,11 @@ doubleAll [] = []
 doubleAll (x:xs) = x * 2 : doubleAll xs
 --doubleAll xs = map (*2) xs
 
+squareAll :: [Int] -> [Int]
+squareAll [] = []
+squareAll (x:xs) = x^2 : squareAll xs
+--squareall xs = map (^2) xs
+
 -- This is not necessary how map is actually implemented,
 -- but it does the exact same as the Prelude version.
 -- map takes a function, applies that function to every element in a list, and returns the new list.

@@ -44,7 +44,6 @@ double = do
 -- return is a function that takes something of type a returns an (IO a)
 -- It wraps it in an IO context
 
-
 -- Write this first without the returns in between
 getThreeInts :: IO [Int]
 getThreeInts = do

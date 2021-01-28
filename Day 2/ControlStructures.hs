@@ -38,6 +38,13 @@ showUser u = case u of
 --
 -- $> showUser Guest
 
+fizzbuzz n = case (3 `divides` n, 5 `divides` n) of
+               (True,  True ) -> "Fizzbuzz"
+               (True,  False) -> "Fizz"
+               (False, True ) -> "Buzz"
+               (False, False) -> show n
+             where divides b a = a `mod` b == 0
+
 -- This is also possible to do with multiple function declarations
 showUser' :: User -> String
 showUser' (Admin n) -> "Admin " ++ n
@@ -74,5 +81,4 @@ qualifyInt i
 -- $> qualifyInt (-10)
 --
 -- $> qualifyInt 0
-
 
