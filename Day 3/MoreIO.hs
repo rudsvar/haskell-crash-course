@@ -6,6 +6,8 @@ readIntAndPrintIt  = do
   let number = read line
   putStrLn ("Your number was: " ++ show (number :: Int)) 
 -- Note the explicit type annotation here!
+-- It would not compile if you removed ":: Int"), because Haskell is unable
+-- to infer the type of the variable `number`.
 
 -- What does (IO a) mean?
 
@@ -17,7 +19,7 @@ getInt = do
   n <- getLine
   return (read n)
 
--- (IO Char) interacts with the outside world and returns and Char
+-- (IO Double) interacts with the outside world and returns and Double
 getDouble :: IO Double
 getDouble = do
   c <- getLine
@@ -63,3 +65,5 @@ getAnIntAndDoNothingWithIt = do
 
 -- IO is designed so that you can perfectly use it without understanding everything.
 -- If you want to understand everything, read up on Monads. (This is hard to grasp!)
+-- You can be very productive in Haskell without understanding the theory behind
+-- Monads.

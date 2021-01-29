@@ -20,7 +20,6 @@ doubleAll (x:xs) = x * 2 : doubleAll xs
 squareAll :: [Int] -> [Int]
 squareAll [] = []
 squareAll (x:xs) = x^2 : squareAll xs
---squareall xs = map (^2) xs
 
 -- This is not necessary how map is actually implemented,
 -- but it does the exact same as the Prelude version.
@@ -29,6 +28,25 @@ squareAll (x:xs) = x^2 : squareAll xs
 map :: (a -> b) -> [a] -> [b]
 map _ []     = []
 map f (x:xs) = f x : map f xs
+
+-- Now doubleAll and squareAll can be easily implemented as maps:
+--
+
+doubleAll' :: [Int] -> [Int]
+doubleAll' xs = map doubleOne xs
+    where doubleOne :: Int -> Int
+          doubleOne x = x * 2
+
+squareAll' :: [Int] -> [Int]
+squareAll' xs = map squareOne xs
+    where squareOne :: Int -> Int
+          squareOne x = x ^ 2
+
+-- even shorter, with a lambda
+squareAll'' xs = map (\x -> x^2) xs
+
+-- equivalently, with partial application
+squareAll''' xs = map (^2) xs -- (_^2) is missing the first parameter
 
 -- Often, we can use map to iterate over a list instead of defining our own recursive function.
 -- Here, we can see that partial application and lambdas can be very useful,
