@@ -85,10 +85,10 @@ keepSmallerThanThree xs = filter lessThanThree xs
       lessThanThree x = x < 3
 
 -- Version 2:
--- dropSmallerThanThree xs = filter (\x -> x < 3) xs
+-- keepSmallerThanThree xs = filter (\x -> x < 3) xs
 
 -- Version 3:
--- dropSmallerThanThree xs = filter (< 3) xs
+-- keepSmallerThanThree xs = filter (< 3) xs
 
 -- lessThanThree, \x -> x < 3 and (< 3) all take one numerical argument and return a bool.
 
